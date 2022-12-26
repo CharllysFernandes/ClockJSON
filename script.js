@@ -121,14 +121,15 @@ function showProgressBar() {
       minutos++
       porcentagemBarra += 100 / 60; // 100% / 60 minutos
       console.log(porcentagemBarra)
-      document.getElementById("progress-bar").style.width = `${porcentagemBarra}%`
+      document.getElementById("progress-bar").style.width = `${porcentagemBarra}%`;
+      document.getElementById("progress-bar").innerHTML = `${porcentagemBarra.toFixed(2)}%`;
 
     }
   }
   sectionShowOff.innerHTML +=
     `
         <div class="progress d-flex w-100">
-        <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:0%">${porcentagemBarra.toFixed(2)}</div>
+        <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:0%"></div>
         </div>
         `
 
@@ -264,7 +265,7 @@ function usingJSON(databaseJSON) {
         showProgressBar();
         showTableEmpty();
         showTableContent(intern);
-        
+
       })
     })
 
