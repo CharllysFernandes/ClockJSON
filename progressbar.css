@@ -1,6 +1,6 @@
 .progress-container {
     height: 0.8rem;
-    width: 32rem;
+    width: auto;
     border-radius: 0.4rem;
   
     background: #000;
