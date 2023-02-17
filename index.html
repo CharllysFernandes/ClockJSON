@@ -20,7 +20,7 @@
 <body class="bg-dark container-fluid text-white">
     <main class="d-flex flex-row gap-3">
         <!-- Section Clock -->
-        <section class="col-4 fixed-top text-center">
+        <section class="d-flex flex-column align-self-center justify-content-center h-75 col-4 fixed-top text-center">
             <div class="m-2" id="clock">
                 <p class="date fs-4" id="dates"></p>
                 <p class="time fs-4" id="timeClock"></p>
@@ -32,7 +32,7 @@
                 <h2 class="date mt-2 fs-5">Today</h2>
                 <!-- Progress bar -->
                 <div class="progress-container">
-                    <div class="progress"></div>
+                    <div class="progress" id="progressToday"></div>
                 </div>
                 <button class="btn mt-3 btn-outline-success" id="startDayCode">start day code</button>
             </div>
