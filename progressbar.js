@@ -28,7 +28,7 @@ function stop() {
 }
 
 function progressWidth() {
-  let cron = setInterval(() => { timer(); }, 36000); // para fazer em minutos
+  let cron = setInterval(() => { timer(); }, 100); // para fazer em minutos
   let width = 0
   function timer() {
     width++
