@@ -1,11 +1,4 @@
-// 
-function showOff(htmlId) {
-  document.getElementById(`${htmlId}`).style.display = "block";
-}
 
-function notShow(htmlId) {
-  document.getElementById(`${htmlId}`).style.display = "none";
-}
 
 function baixarArquivoLocal(name, dados) {
   console.log(dados)
@@ -15,100 +8,17 @@ function baixarArquivoLocal(name, dados) {
   link.click();
 }
 
-function createLog() {
-  sectionShowOff.innerHTML +=
-    `
-  <input class="fs-5" type="date" id="date">
-  <div id="dateErro" class="text-warning"></div>
-  <input class="fs-4" type="text" id="logMessge" maxlength="50" placeholder="create a log message">
-  <div id="msgErro" class="text-warning"></div>
-  <button class="btn-primary btn text-capitalize" id="createJsonFile">create JSON file</button>
-  `
-}
-
-function showButton(msgState, buttonId) {
-  sectionShowOff.innerHTML +=
-    `
-    <button type="button" class="btn btn-outline-primary" id="${buttonId}">${msgState}</button>
-    `
-}
 
 function showClock() {
   setInterval(() => {
     getHours()
   }, 1000)
 
-  sectionShowOff.innerHTML =
-    `
-  <h1 class="fw-lighter text-white fs-4">100 Days of Code</h1>
-  <div class="my-2 clock fw-lighter border border-0 rounded-pill bg-info fw-bold text-center fs-1 p-2 w-50 text-white"
-  id="relogio"></div>
-  `
 }
 
-function showTableEmpty() {
-  sectionShowOff.innerHTML +=
-    `<div class="w-100 h-50 overflow-scroll">
-  <table class="table table-dark table-striped fw-lighter" id="tableList">
-  <thead>
-      <tr>
-          <th scope="col">Dia</th>
-          <th scope="col">Log</th>
-          <th scope="col">Data</th>
-          <th scope="col"></th>
-      </tr>
-  </thead>
-  <tbody id="content">
-  </tbody>
-  </table>
-  </div>
-  `
-}
 
-function showTableContent(intern) {
-  for (let i = 0; i < intern.length; i++) {
-    let content = document.getElementById("content");
-    content.innerHTML +=
-      `
-    <tr>
-    <th scope="row">${intern[i].id}</th>
-    <td>${intern[i].log.replaceAll("_", " ")}</td>
-    <td>${intern[i].msgDate}</td>
-    </tr>
-    `
 
-  }
-}
 
-function showTable(id, log, date) {
-  sectionShowOff.innerHTML +=
-    `
-    <div class="w-100 h-50 overflow-scroll">
-  <table class="table table-dark table-striped fw-lighter" id="tableList">
-  <thead>
-      <tr>
-          <th scope="col">Dia</th>
-          <th scope="col">Log</th>
-          <th scope="col">Data</th>
-          <th scope="col"></th>
-      </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">${id}</th>
-      <td>${log.replaceAll("_", " ")}</td>
-      <td>${date}</td>
-   <td id="btnCompatilhar">
-   <a href="#" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share-fill" viewBox="0 0 16 16">
-   <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
-   </svg></a>
-   </td>
-   </tr>
-  </tbody>
-  </table>
-  </div>
-  `
-}
 
 function showProgressBar() {
 
@@ -126,28 +36,10 @@ function showProgressBar() {
 
     }
   }
-  sectionShowOff.innerHTML +=
-    `
-        <div class="progress d-flex w-100">
-        <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:0%"></div>
-        </div>
-        `
 
 }
 
 
-/* Check if there is data or not from user responses. */
-
-// buttons user responses.
-
-const buttonNotDB = document.getElementById('btnNot');
-const buttonYesDB = document.getElementById('btnYes');
-
-// Show Off to User
-
-const sectionShowOff = document.getElementById("showOff");
-
-// NOT DATABASE
 
 buttonNotDB.addEventListener("click", function () {
   console.log("not database create one...")
@@ -276,26 +168,6 @@ function usingJSON(databaseJSON) {
 }
 
 
-//=======================================
-// Clock
-
-const getHours = () => {
-  // const clock = document.getElementsByClassName('clock')[0]
-  const relogio = document.getElementById("relogio")
-  const date = new Date()
-  const hours = date.getHours()
-  const minutes = date.getMinutes()
-  const seconds = date.getSeconds()
-  const hour = hours < 10 ? `0${hours}` : hours
-  const minute = minutes < 10 ? `0${minutes}` : minutes
-  const second = seconds < 10 ? `0${seconds}` : seconds
-  relogio.innerHTML = `${hour}:${minute}:${second}`
-}
-
-
-
-// End Clock
-//=========================================
 
 //=========================================
 // Upload json File

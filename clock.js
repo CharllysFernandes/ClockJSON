@@ -17,9 +17,9 @@ function timer() {
     var day = date.getDate();
     var year = date.getFullYear();
     let fullDate = `${day}-${month}-${year}`
-    
+
     setInterval(timer, 1000)
-    
+
     timeClock.innerText = time;
     dates.innerText = fullDate;
 }
