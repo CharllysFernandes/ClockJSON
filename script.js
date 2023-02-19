@@ -1,4 +1,14 @@
-
+const tableBodyProgress = document.getElementById('tableBodyProgress');
+const exampleTableEmpty =
+  `
+<tr>
+  <th scope="row">
+    <input class="bg-transparent text-white border-0 rounded-0 w-100" type="number">
+  </th>
+  <td colspan="2"><input class="bg-transparent text-white border-0 rounded-0" type="text"></td>
+  <td><a href="#">Share</a></td>
+</tr>
+`
 
 function baixarArquivoLocal(name, dados) {
   console.log(dados)
@@ -7,38 +17,6 @@ function baixarArquivoLocal(name, dados) {
   link.download = name;
   link.click();
 }
-
-
-function showClock() {
-  setInterval(() => {
-    getHours()
-  }, 1000)
-
-}
-
-
-
-
-
-function showProgressBar() {
-
-  let minutos = 0;
-  let porcentagemBarra = 0;
-  cron = setInterval(() => { timer(); }, 60000); // para fazer em minutos
-
-  function timer() {
-    if (minutos <= 60) {
-      minutos++
-      porcentagemBarra += 100 / 60; // 100% / 60 minutos
-      console.log(porcentagemBarra)
-      document.getElementById("progress-bar").style.width = `${porcentagemBarra}%`;
-      document.getElementById("progress-bar").innerHTML = `${porcentagemBarra.toFixed(2)}%`;
-
-    }
-  }
-
-}
-
 
 
 buttonNotDB.addEventListener("click", function () {
@@ -203,10 +181,7 @@ window.addEventListener('', function () {
                     </tr>
                     `;
           }
-          mostrar("sectionList")
-          mostrar("sectionClock")
-          esconder("barraProgresso")
-          esconder("sectionOne")
+          
 
         });
         reader.readAsText(upload.files[0]); // Read the uploaded file
