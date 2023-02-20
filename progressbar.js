@@ -16,7 +16,7 @@ function start() {
     stopWatch = true
     buttonStartStop.classList.replace('btn-outline-success', 'btn-outline-danger')
     buttonStartStop.innerText = "stop day code"
-    // progressWidth()
+    progressWidth()
     
 }
 
