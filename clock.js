@@ -1,5 +1,15 @@
 const timeClock = document.getElementById('timeClock')
 const dates = document.getElementById('dates')
+    
+function fullDates() {
+    var date = new Date();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var year = date.getFullYear();
+    let fullDate = `${day}-${month}-${year}`
+
+    dates.innerText = fullDate;
+}
 
 function timer() {
     var date = new Date();
@@ -13,14 +23,10 @@ function timer() {
     seconds = (seconds < 10) ? "0" + seconds : seconds;
     let time = `${hours}:${minutes}:${seconds}`
 
-    var month = date.getMonth() + 1;
-    var day = date.getDate();
-    var year = date.getFullYear();
-    let fullDate = `${day}-${month}-${year}`
-
-    setInterval(timer, 1000)
-
     timeClock.innerText = time;
-    dates.innerText = fullDate;
 }
+
+setInterval(timer, 1000);
+
 timer();
+fullDates();

@@ -4,7 +4,12 @@ const progressToday = document.getElementById('progressToday');
 let stopWatch = false;
 let width = 0;
 const changeProgress = (progress) => {
-  progressToday.style.width = `${progress}%`;
+  if (progress < 101) {
+    progressToday.style.width = `${progress}%`;
+
+  } else {
+    stop()
+  }
 };
 
 buttonStartStop.addEventListener('click', function () {
@@ -16,7 +21,7 @@ function start() {
     stopWatch = true
     buttonStartStop.classList.replace('btn-outline-success', 'btn-outline-danger')
     buttonStartStop.innerText = "stop day code"
-    progressWidth()
+    progressWidth(stopWatch)
     
 }
 
@@ -24,21 +29,24 @@ function stop() {
     stopWatch = false
     buttonStartStop.classList.replace('btn-outline-danger' ,'btn-outline-success')
     buttonStartStop.innerText = "start day code"
-    // console.log(width)
+    progressWidth(stopWatch)
     
 }
 
-function progressWidth() {
-  let cron = setInterval(() => { timer(); }, 100); // para fazer em minutos
-  function timer() {
-    width++
-    if (width === 100) {
-        clearInterval(cron)
-        stop()
-    } else {
-        changeProgress(width)
-    }
+function progressWidth(stopWatch) {  
+  if (stopWatch === true) {
+    // width++
+    // setInterval(timerProgress, 10)
+    
+  } else {
+    // clearInterval()
   }
-    
+  
 }
 
+
+function timerProgress() {
+  width++
+  changeProgress(width)
+
+}
