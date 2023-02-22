@@ -1,40 +1,56 @@
-const buttonStartStop = document.getElementById('startDayCode');
+// JS
+const startStopButton = document.getElementById('startDayCode');
 const progressToday = document.getElementById('progressToday');
 
-// progressToday.style.width = `${progress}%`;
+const PROGRESS_INTERVAL = 36000; // intervalo em milissegundos para 1 hora
+const MAX_PROGRESS = 100; // valor máximo da barra de progresso
 
-let stopWatch = false;
-let width = 0;
+let progressWidth = 0; // largura atual da barra de progresso
+let progressIntervalId = null; // id do setInterval para controlar a barra de progresso
+let progressStatus = 'paused'; // status atual da barra de progresso
 
-buttonStartStop.addEventListener('click', function () {
-    stopWatch ? stop() : start();
-    console.log(stopWatch)
-})
+startStopButton.addEventListener('click', function () {
+  startStop();
+});
 
-var incremento = () => width++
+function startStop() {
+  if (progressStatus === 'paused') {
+    start();
+    progressStatus = 'running';
+    progressIntervalId = setInterval(updateProgress, PROGRESS_INTERVAL);
+  } else if (progressStatus === 'running') {
+    pause();
+    progressStatus = 'paused';
+    clearInterval(progressIntervalId);
+  } else if (progressStatus === 'stopped') {
+    restart();
+    progressStatus = 'running';
+    progressIntervalId = setInterval(updateProgress, PROGRESS_INTERVAL);
+  }
+}
 
 function start() {
-    stopWatch = true
-    buttonStartStop.classList.replace('btn-outline-success', 'btn-outline-danger')
-    buttonStartStop.innerText = "stop day code"
-    
-    setTimeout(() => {
-      console.log('incremento');
-      incremento()
-    }, 100);
+  startStopButton.classList.replace('btn-outline-success', 'btn-outline-danger');
+  startStopButton.innerText = 'Stop day code';
 }
 
-
-function stop() {
-    stopWatch = false
-    buttonStartStop.classList.replace('btn-outline-danger' ,'btn-outline-success')
-    buttonStartStop.innerText = "start day code"
-    
+function pause() {
+  startStopButton.classList.replace('btn-outline-danger', 'btn-outline-success');
+  startStopButton.innerText = 'Start day code';
 }
 
+function restart() {
+  progressWidth = 0;
+  progressToday.style.width = '0%';
+}
 
-
-
-
-// faça o incremento ++ x milesegundos
-// adicione esse incremento ao width até chegar em 100%
+function updateProgress() {
+  if (progressWidth < MAX_PROGRESS) {
+    progressWidth++;
+    progressToday.style.width = progressWidth + '%';
+  } else {
+    clearInterval(progressIntervalId);
+    progressStatus = 'stopped';
+    pause();
+  }
+}

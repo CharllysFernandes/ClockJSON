@@ -2,18 +2,15 @@ const timeClock = document.getElementById('timeClock')
 const dates = document.getElementById('dates')
     
 function fullDates() {
-    var date = new Date();
-    var month = date.getMonth() + 1;
-    var day = date.getDate();
-    var year = date.getFullYear();
-    let fullDate = `${day}-${month}-${year}`
+    const date = new Date();
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+    const fullDate = date.toLocaleDateString('pt-BR', options);
 
     dates.innerText = fullDate;
 }
 
 function timer() {
     var date = new Date();
-
     var hours = date.getHours()
     var minutes = date.getMinutes()
     var seconds = date.getSeconds();

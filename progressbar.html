@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Barra de progresso com botão</title>
+</head>
+<body>
+	<div id="progresso" style="width: 0%; height: 30px; background-color: blue;"></div>
+	<br>
+	<button onclick="startStop()">Iniciar</button>
+
+	<script>
+		var progresso = document.getElementById("progresso");
+		var status = "pausado";
+		var tempo = null;
+		var largura = 0;
+
+		function startStop() {
+			if (status == "pausado") {
+				status = "andando";
+				tempo = setInterval(frame, 100);
+			} else if (status == "andando") {
+				status = "pausado";
+				clearInterval(tempo);
+			} else if (status == "parado") {
+				status = "andando";
+				largura = 0;
+				progresso.style.width = largura + "%";
+				tempo = setInterval(frame, 100);
+			}
+		}
+
+		function frame() {
+			if (largura >= 100) {
+				clearInterval(tempo);
+				status = "parado";
+			} else {
+				largura++;
+				progresso.style.width = largura + "%";
+			}
+		}
+	</script>
+</body>
+</html>
